@@ -5,12 +5,26 @@
   let current = new Date();
   let currentYear = current.getFullYear();
   let currentMonth = current.getMonth();
+  let dayOfWeek = [
+    'Sunday',
+    'Monday',
+    'Tuesday',
+    'Wednesday',
+    'Thursday',
+    'Friday',
+    'Saturday',
+  ];
 </script>
 
 <main>
   <h1>Hello {name}!</h1>
   <Navbar year={currentYear} month={currentMonth} />
-  <Month />
+  <div class="weekdays">
+    {#each dayOfWeek as day}
+      <span>{day}</span>
+    {/each}
+  </div>
+  <Month year={currentYear} month={currentMonth} />
 </main>
 
 <style>
