@@ -2,11 +2,14 @@
   import Navbar from './components/Navbar.svelte';
   import Month from './components/Month.svelte';
   export let name: string;
+  let current = new Date();
+  let currentYear = current.getFullYear();
+  let currentMonth = current.getMonth();
 </script>
 
 <main>
   <h1>Hello {name}!</h1>
-  <Navbar />
+  <Navbar year={currentYear} month={currentMonth} />
   <Month />
 </main>
 

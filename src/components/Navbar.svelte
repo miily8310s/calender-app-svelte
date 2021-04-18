@@ -1,20 +1,6 @@
 <script lang="ts">
-  let year = 2021;
-  let monthesOfYear = [
-    '1',
-    '2',
-    '3',
-    '4',
-    '5',
-    '6',
-    '7',
-    '8',
-    '9',
-    '10',
-    '11',
-    '12',
-  ];
-  let month = 1;
+  export let year: number;
+  export let month: number;
   function incrementMonth(direction) {
     const current = new Date(year, month, 1);
     current.setMonth(current.getMonth() + direction);
@@ -24,11 +10,11 @@
 </script>
 
 <div class="heading">
-  <div class="control" onclick={() => incrementMonth(-1)}>
+  <div class="control" on:click={() => incrementMonth(-1)}>
     <i class="arrow left" />
   </div>
-  <div class="label">{year}年 {month}月</div>
-  <div class="control" onclick={() => incrementMonth(1)}>
+  <div class="label">{year}年 {month + 1}月</div>
+  <div class="control" on:click={() => incrementMonth(1)}>
     <i class="arrow right" />
   </div>
 </div>
