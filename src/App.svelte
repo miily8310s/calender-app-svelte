@@ -14,17 +14,27 @@
     'Friday',
     'Saturday',
   ];
+
+  function incrementMonth(direction) {
+    current.setMonth(current.getMonth() + direction);
+    currentYear = current.getFullYear();
+    currentMonth = current.getMonth();
+  }
 </script>
 
 <main>
   <h1>Hello {name}!</h1>
-  <Navbar year={currentYear} month={currentMonth} />
+  <Navbar
+    year={currentYear}
+    month={currentMonth + 1}
+    on:incrementMonth={(e) => incrementMonth(e.detail)}
+  />
   <div class="weekdays">
     {#each dayOfWeek as day}
       <span>{day}</span>
     {/each}
   </div>
-  <Month year={currentYear} month={currentMonth} />
+  <Month year={currentYear} month={currentMonth + 1} />
 </main>
 
 <style>

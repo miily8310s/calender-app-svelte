@@ -6,19 +6,22 @@
   let days = [];
 
   // Day
-  let firstDayOfMonth = new Date(year, month + 1, 1);
-  let lastDay = new Date(year, month + 1, 0).getDate();
-  let prevLastDay = new Date(year, month, 0).getDate();
+  $: firstDayOfMonth = new Date(year, month + 1, 1);
+  $: lastDay = new Date(year, month + 1, 0).getDate();
+  $: prevLastDay = new Date(year, month, 0).getDate();
 
   // Index
-  let firstDayIndex = firstDayOfMonth.getDay();
-  let lastDayIndex = new Date(year, month + 1, 0).getDay();
+  $: firstDayIndex = firstDayOfMonth.getDay();
+  $: lastDayIndex = new Date(year, month + 1, 0).getDay();
 
-  for (let x = firstDayIndex; x > 0; x--) {
-    days.push(prevLastDay - x + 1);
-  }
-  for (let i = 1; i <= lastDay; i++) {
-    days.push(i);
+  $: {
+    days = [];
+    for (let x = firstDayIndex; x > 0; x--) {
+      days.push(prevLastDay - x + 1);
+    }
+    for (let i = 1; i <= lastDay; i++) {
+      days.push(i);
+    }
   }
 </script>
 

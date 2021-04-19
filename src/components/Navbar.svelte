@@ -1,20 +1,17 @@
 <script lang="ts">
+  import { createEventDispatcher } from 'svelte';
+  const dispatch = createEventDispatcher();
+
   export let year: number;
   export let month: number;
-  function incrementMonth(direction) {
-    const current = new Date(year, month, 1);
-    current.setMonth(current.getMonth() + direction);
-    month = current.getMonth();
-    year = current.getFullYear();
-  }
 </script>
 
 <div class="heading">
-  <div class="control" on:click={() => incrementMonth(-1)}>
+  <div class="control" on:click={() => dispatch('incrementMonth', -1)}>
     <i class="arrow left" />
   </div>
   <div class="label">{year}年 {month + 1}月</div>
-  <div class="control" on:click={() => incrementMonth(1)}>
+  <div class="control" on:click={() => dispatch('incrementMonth', 1)}>
     <i class="arrow right" />
   </div>
 </div>
