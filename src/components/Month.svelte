@@ -27,6 +27,16 @@
 
 <div class="monthdays">
   {#each days as day}
-    <div>{day}</div>
+    <div class="day">{day}</div>
   {/each}
 </div>
+
+<style>
+  .monthdays {
+    display: flex;
+    justify-content: center;
+  }
+  .day {
+    margin-right: 2px;
+  }
+</style>
