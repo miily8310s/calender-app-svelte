@@ -6,18 +6,16 @@
   let days = [];
 
   // Day
-  $: firstDayOfMonth = new Date(year, month + 1, 1);
-  $: lastDay = new Date(year, month + 1, 0).getDate();
-  $: prevLastDay = new Date(year, month, 0).getDate();
+  $: firstDayOfMonth = new Date(year, month - 1, 1);
+  $: lastDay = new Date(year, month, 0).getDate();
 
   // Index
   $: firstDayIndex = firstDayOfMonth.getDay();
-  $: lastDayIndex = new Date(year, month + 1, 0).getDay();
 
   $: {
     days = [];
     for (let x = firstDayIndex; x > 0; x--) {
-      days.push(prevLastDay - x + 1);
+      days.push('');
     }
     for (let i = 1; i <= lastDay; i++) {
       days.push(i);
@@ -35,6 +33,11 @@
   .monthdays {
     display: flex;
     justify-content: center;
+  }
+
+  .monthdays {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
   }
   .day {
     margin-right: 2px;

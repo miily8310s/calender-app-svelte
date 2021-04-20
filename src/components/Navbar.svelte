@@ -10,7 +10,7 @@
   <div class="control" on:click={() => dispatch('incrementMonth', -1)}>
     <i class="arrow left" />
   </div>
-  <div class="label">{year}年 {month + 1}月</div>
+  <div class="label">{year}年 {month}月</div>
   <div class="control" on:click={() => dispatch('incrementMonth', 1)}>
     <i class="arrow right" />
   </div>
@@ -21,6 +21,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-bottom: 1rem;
   }
   .arrow {
     display: inline-block;

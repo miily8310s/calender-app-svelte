@@ -1,32 +1,22 @@
 <script lang="ts">
   import Navbar from './components/Navbar.svelte';
   import Month from './components/Month.svelte';
-  export let name: string;
   let current = new Date();
   let currentYear = current.getFullYear();
-  let currentMonth = current.getMonth();
-  let dayOfWeek = [
-    'Sunday',
-    'Monday',
-    'Tuesday',
-    'Wednesday',
-    'Thursday',
-    'Friday',
-    'Saturday',
-  ];
+  let currentMonth = current.getMonth() + 1;
+  let dayOfWeek = ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'];
 
   function incrementMonth(direction) {
-    current.setMonth(current.getMonth() + direction);
+    current.setMonth(currentMonth + direction);
     currentYear = current.getFullYear();
     currentMonth = current.getMonth();
   }
 </script>
 
 <main>
-  <h1>Hello {name}!</h1>
   <Navbar
     year={currentYear}
-    month={currentMonth + 1}
+    month={currentMonth}
     on:incrementMonth={(e) => incrementMonth(e.detail)}
   />
   <div class="weekdays">
@@ -34,7 +24,7 @@
       <span>{day}</span>
     {/each}
   </div>
-  <Month year={currentYear} month={currentMonth + 1} />
+  <Month year={currentYear} month={currentMonth} />
 </main>
 
 <style>
@@ -45,11 +35,10 @@
     margin: 0 auto;
   }
 
-  h1 {
-    color: #ff3e00;
+  .weekdays {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
     text-transform: uppercase;
-    font-size: 4em;
-    font-weight: 100;
   }
 
   @media (min-width: 640px) {
